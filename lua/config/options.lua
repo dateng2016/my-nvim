@@ -6,3 +6,9 @@ vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamedplus"
 vim.g.autoformat = false
 vim.opt.wrap = false
+
+-- nvim-treesitter (main branch) dropped the standalone `jsonc`/`json5` parsers;
+-- JSON-with-comments is now handled by the `json` parser. Point those filetypes
+-- at it so opening tsconfig.json, waybar configs, *.jsonc, etc. doesn't throw
+-- "Parser not available for language jsonc".
+vim.treesitter.language.register("json", { "jsonc", "json5" })
